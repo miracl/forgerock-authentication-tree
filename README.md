@@ -58,7 +58,7 @@ The GUI tree builder will appear. Initially it contains two connected nodes - `"
         + `"sub"`: `"uid"`
     + Add the following entries to Attribute Mapper Configuration. You have to click "Add" button first for subform to popup and click "+" button after finished:
         + `"sub"`: `"uid"`
-        + `"email"`: `"email"`
+        + `"email"`: `"mail"`
     + Save Attributes in the Session: `Off`
     + OpenID Connect Mix-Up Mitigation Enabled: `Off`
     + Token Issuer: `https://api.mpin.io`

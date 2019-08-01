@@ -1,9 +1,19 @@
 # MIRACL Trust Node for Authentication Trees
 
-[MIRACL Trust](https://miracl.com) is a service that acts as password-free secured online identity provider utilizing patented elliptic curve cryptography.
-MIRACL Trust can be configured as external Access Manager OIDC identity provider utilizing Authentication Trees model. The step-by-step manual is outlined below.
+[MIRACL Trust® ID](https://miracl.com) is a 100% software solution providing true two-factor authentication using the latest [Zero Knowledge Proof (ZKP)](https://www.miracl.com/zero-knowledge) technology - no personal data is stored or transmitted. This eliminates the need for outdated security practices such as passwords, SMS Texts, push notifications and key-cards.
+
+Usability is paramount, no additional user enrolment steps are required and users authenticate in one step. Without the requirement for hardware, mobiles or fiddly second steps, your users will love the simplicity and you will appreciate the reduction in support and maintenance overheads.
+
+Provisioned as a PAYG service at a fraction of the cost of hardware solutions or SMS texts, MIRACL Trust® ID can be integrated into any OIDC compliant platform such as ForgeRock. Capable of scaling to millions of users overnight, a combination of usability, security and cost make it possible to deploy strong MFA to large B2C networks where it was previously impossible or impractical.
+MIRACL Trust® ID makes a perfect addition to any large-scale ForgeRock installation.
+
+[![Play Video](images/video.png)](https://www.youtube.com/watch?v=h-ccPbfWI7A)
+
+Please visit [https://miracl.com](https://miracl.com) or email forgerock@miracl.com for details.
+
 
 ## Integration manual
+
 The steps of reference integration constructing are listed below.
 
 * Deploy Access Manager 6 as described in the [ForgeRock manual](https://backstage.forgerock.com/docs/am/6/quick-start-guide).
@@ -18,10 +28,10 @@ The steps of reference integration constructing are listed below.
 
 The GUI tree builder will appear. Initially it contains two connected nodes - `"Start"` and `"Failure"`.
 
-* In the "Components" section at the left, find "OpenID Connect" one and drag it to the working area. Do the same for "Anonymous User Mapping" and "Success" components. You should have the following components at the working area:
+* In the "Components" section at the left, find "OpenID Connect" one and drag it to the working area. Do the same for "Provision Dynamic Account" and "Success" components. You should have the following components at the working area:
     + "Start"
     + "OpenID Connect"
-    + "Anonymous User Mapping"
+    + "Provision Dynamic Account"
     + "Success"
 
 
@@ -53,12 +63,12 @@ The GUI tree builder will appear. Initially it contains two connected nodes - `"
     + OpenID Connect Validation Type: `JWK URL`
     + OpenID Connect Validation Value: `https://api.mpin.io/oidc/certs`
 
-* Now nodes should be connected in the given way. Node input is located at the left, and output(s) at the right. Connection is performed by dragging some output to a required input. 
+* Now nodes should be connected in the given way. Node input is located at the left, and output(s) at the right. Connection is performed by dragging some output to a required input.
     + Connect "Start" node output to "MIRACL" node input.
-    + Connect "MIRACL" node output saying "No account exists" to "Anonymous User Mapping" node input.
-    + Connect "Anonymous User Mapping" node output to "Success" node input.
-    
-    ![ScreenShot](./forgerock_authentication_tree.png)
+    + Connect "MIRACL" node output saying "No account exists" to "Provision Dynamic Account" node input.
+    + Connect "Provision Dynamic Account" node output to "Success" node input.
+
+    ![ScreenShot](images/forgerock_authentication_tree.png)
 
 * Click "Save".
 
@@ -75,7 +85,9 @@ The GUI tree builder will appear. Initially it contains two connected nodes - `"
 * Logout from Access Manager and try to login again.
 * AM should automatically redirect you to the MIRACL identity provider.
 
+
 # Disclaimer
+
 The sample integration setup described herein is provided on an "as is" basis, without warranty of any kind, to the fullest extent permitted by law. MIRACL does not warrant or guarantee the individual success developers may have when following the integration manual on their development platforms or in production configurations.
 MIRACL does not warrant, guarantee or make any representations regarding the use, results of use, accuracy, timeliness or completeness of any data or information relating to the integration manual. MIRACL disclaims all warranties, expressed or implied, and in particular, disclaims all warranties of merchantability, and warranties related to the integration manual, or any service or software related thereto.
 MIRACL shall not be liable for any direct, indirect or consequential damages or costs of any type arising out of any action taken by you or others related to the integration manual.
